@@ -13,7 +13,6 @@ class Links:
 
     def get_link(self):
         response = requests.get(self.source)
-        link_list = []
 
         if response.status_code == 200:
             try:
@@ -21,7 +20,7 @@ class Links:
                 assert isinstance(text, str)
 
                 tree = HTML(text)
-                links = tree.xpath('//div[@class="text"]//a[1]/@href')
+                links = tree.xpath('//div[@class="text"]//a[1]/@href') # returns dtype list
 
                 return links
 
