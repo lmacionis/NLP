@@ -2,6 +2,8 @@ import requests
 from lxml.etree import HTML
 from lxml import etree
 from requests import HTTPError
+import pandas as pd
+import numpy as np
 
 
 URL = "https://www.geeksforgeeks.org/python/python-programming-language-tutorial/"
@@ -53,18 +55,20 @@ class Crawl:
         return info
 
 
-def dict_url_title(url, title):
-    pass
-
 get_data = Crawl(URL).get_data()
 
 # get_link_title = Crawl(URL).get_link_title()
-# print(get_link_title)
-# 
+
+# Take titles and URL'S and form csv file.
 link, title = Crawl(URL).get_link_title()
-print(link[0])
-URL = link[1]
-# print(URL)
-get_data = Crawl(URL).get_data()
-text = Crawl(URL).text()
-print(text)
+def save_as_csv(link, title):
+    if len(title) != len(link):
+        # Adding NaN to fix diference between link's and titles, that we could transform it into DataFrame. 
+        title.extend(["NaN"] * (len(link) - len(title)))
+        dict_for_csv = {"Title": title, "Link": link}
+    
+    df = pd.DataFrame(dict_for_csv)    
+    df.index += 1
+    df.to_csv("./data/data_as.csv")
+
+save_as_csv(link, title)
