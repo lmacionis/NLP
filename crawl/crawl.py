@@ -64,17 +64,17 @@ URL = link[6]
 get_data = Crawl(URL).get_data()
 print(URL)
 info = Crawl(URL).text()
-info = ' '.join(info)
+# info = ' '.join(info)
 print(info)
 
-# def save_as_csv(link, title):
-#     if len(title) != len(link):
-#         # Adding NaN to fix diference between link's and titles, that we could transform it into DataFrame. 
-#         title.extend(["NaN"] * (len(link) - len(title)))
-#         dict_for_csv = {"Title": title, "Link": link}
+def save_as_csv(link, title):
+    if len(title) != len(link):
+        # Adding NaN to fix diference between link's and titles, that we could transform it into DataFrame. 
+        title.extend(["NaN"] * (len(link) - len(title)))
+        dict_for_csv = {"Title": title, "Link": link}
     
-#     df = pd.DataFrame(dict_for_csv)    
-#     df.index += 1
-#     df.to_csv("./data/data_as.csv")
+    df = pd.DataFrame(dict_for_csv)    
+    df.index += 1
+    df.to_csv("./data/data_as.csv")
 
-# save_as_csv(link, title)
+save_as_csv(link, title)

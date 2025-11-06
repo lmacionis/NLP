@@ -6,8 +6,7 @@ import pandas as pd
 import numpy as np
 
 
-# URL = "https://www.geeksforgeeks.org/python/python-programming-language-tutorial/"
-URL = "https://www.w3schools.com/python/default.asp"
+# URL = "https://www.w3schools.com/python/default.asp"
 url_path = "https://www.w3schools.com/python/"
 
 
@@ -64,15 +63,13 @@ class Crawl:
         return info
 
 
-get_data = Crawl(URL).get_data()
-
 # get_link_title = Crawl(URL).get_link_title()
-
+# Crawl(URL).get_data()
 # Take titles and URL'S and form csv file.
-link, title = Crawl(URL).get_link_title()
-URL = url_path + link[10]
-get_data = Crawl(URL).get_data()
-print(URL)
-info = Crawl(URL).text()
-info = ' '.join(info)
-print(info)
+# link, title = Crawl(URL).get_link_title()
+# URL = url_path + link[10]
+# Crawl(URL).get_data()
+# print(URL)
+# info = Crawl(URL).text()
+# info = ' '.join(info)
+# print(info)
